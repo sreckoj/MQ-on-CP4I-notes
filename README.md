@@ -3,6 +3,7 @@
 
 >UNDER CONSTRUCTION!
 > - ✅  - means "completed"
+> - 📝  - means "in the process - partly answered"
 > - ⚠️  - means "waiting for the answer"
 
 <br>
@@ -10,7 +11,7 @@
 **The table of contents:**
 
 
-- ⚠️ [OCP Console vs CloudPak Console](topics/ocp-console-vs-cp-console)
+- ✅ [OCP Console vs CloudPak Console](topics/ocp-console-vs-cp-console)
 
 - ✅ [Setting up QMgrs](topics/setting-up-qmgrs)
 
