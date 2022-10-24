@@ -17,7 +17,7 @@
 
 - ✅ [Additional configuration](topics/additional-configuration)
 
-- 📝 [QMgr customization](topics/qmgr-customization)
+- ✅ [QMgr customization](topics/qmgr-customization)
 
 - ⚠️ [QMGR to QMGR communication](topics/qmgr-to-qmgr-communication)
 
