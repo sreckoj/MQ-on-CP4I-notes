@@ -7,10 +7,8 @@
 
 <br>
 
-**The table of content:**
+**The table of contents:**
 
-
-MQ-on-CP4I-notes
 
 - ⚠️ [OCP Console vs CloudPak Console](topics/ocp-console-vs-cp-console)
 
