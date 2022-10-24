@@ -34,7 +34,7 @@ metadata:
   namespace: cp4i
 spec:
   license:
-    accept: true
+    accept: false
     license: L-RJON-CD3JKX
     use: NonProduction
   queueManager:
