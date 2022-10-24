@@ -5,7 +5,9 @@
 **The table of content:**
 
 
-- [OCP Console vs CloudPak Console](topics/ocp-console-vs-cp-console)
+MQ-on-CP4I-notes
+
+- ⚠️ [OCP Console vs CloudPak Console](topics/ocp-console-vs-cp-console)
 
 - [Setting up QMgrs](topics/setting-up-qmgrs)
 
@@ -45,7 +47,7 @@
 
 - [Defining file system attributes](topics/file-system-attributes)
 
-- [Environment promotion patterns (dev-test-prod)](topics/env-promotions)
+- [⚠️ Environment promotion patterns (dev-test-prod)](topics/env-promotions)
 
-- [Export MQ config generated from graphical UI](topics/export-from-gui)
+- [⚠️ Export MQ config generated from graphical UI](topics/export-from-gui)
 
