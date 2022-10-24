@@ -1,6 +1,9 @@
 
 # IBM MQ on CP4I notes
 
+>Under construction!
+> - ✅ means "completed"
+> - ⚠️ means "waiting for the answer"
 
 **The table of content:**
 
