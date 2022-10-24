@@ -1,0 +1,2 @@
+
+# QMGR to QMGR communication
