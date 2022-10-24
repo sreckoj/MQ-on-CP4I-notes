@@ -83,7 +83,7 @@ Note the following snipped in the above example:
 The **name** points to the name of the ConfigMap and **items** point to the MQSC content inside the ConfigMap.
 Note also how the MQSC is written in multi lines in the ConfigMap.
 
-To apply the above YAMLs you can put them to the yaml files and run for example:
+To apply the above YAMLs you can put them into the yaml files and run for example:
 ```
 oc apply -f myconfigmap.yaml
 ```

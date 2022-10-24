@@ -15,7 +15,7 @@
 
 - ✅ [Setting up QMgrs](topics/setting-up-qmgrs)
 
-- ⚠️ [Additional configuration](topics/additional-configuration)
+- ✅ [Additional configuration](topics/additional-configuration)
 
 - ⚠️ [QMgr customization](topics/qmgr-customization)
 
