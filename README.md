@@ -17,7 +17,7 @@
 
 - ✅ [Additional configuration](topics/additional-configuration)
 
-- ⚠️ [QMgr customization](topics/qmgr-customization)
+- 📝 [QMgr customization](topics/qmgr-customization)
 
 - ⚠️ [QMGR to QMGR communication](topics/qmgr-to-qmgr-communication)
 
@@ -53,5 +53,5 @@
 
 - ⚠️ [Environment promotion patterns (dev-test-prod)](topics/env-promotions)
 
-- [⚠️ Export MQ config generated from graphical UI](topics/export-from-gui)
+- ⚠️ [Export MQ config generated from graphical UI](topics/export-from-gui)
 
