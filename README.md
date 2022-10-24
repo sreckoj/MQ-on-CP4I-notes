@@ -12,7 +12,7 @@
 
 - ⚠️ [OCP Console vs CloudPak Console](topics/ocp-console-vs-cp-console)
 
-- ⚠️ [Setting up QMgrs](topics/setting-up-qmgrs)
+- ✅ [Setting up QMgrs](topics/setting-up-qmgrs)
 
 - ⚠️ [Additional configuration](topics/additional-configuration)
 
