@@ -58,3 +58,5 @@ spec:
   web:
     enabled: true
 ```
+
+Don't forget to change *spec.license.accept* to *true* before applying it.
