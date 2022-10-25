@@ -19,9 +19,21 @@ Networking in OpenShift and generally in Kubernetes is a large and complex topic
 
 - The OpenShift Route exposes the service to the external world by defining the *hostname* for this service (the underlying wildcard DNS records are used for that).
 
+- There is one detail that is maybe not that much emphasized in the documentation but could be important for our MQ story. The route uses the HTTPS protocol. But, what is "hidden" under HTTPS is not necessarily the HTTP. HTTPS can act as an "envelope" around something that can be any other protocol. In our case MQ.
 
 
+<img width="850" src="images/Snip20221025_9.png">
 
-More details:
-https://docs.openshift.com/container-platform/4.11/networking/understanding-networking.html
 
+More details can be found here:
+
+- General Kubernetes:
+  https://kubernetes.io/docs/concepts/cluster-administration/networking/
+
+- OpenShift specifics:  
+  https://docs.openshift.com/container-platform/4.10/networking/understanding-networking.html
+
+- Despite being a little bit older, this is a very good series of articles that explain networking in Kubernetes:
+  - Part 1: https://medium.com/google-cloud/understanding-kubernetes-networking-pods-7117dd28727
+  - Part 2: https://medium.com/google-cloud/understanding-kubernetes-networking-services-f0cb48e4cc82
+  - Part 3: https://medium.com/google-cloud/understanding-kubernetes-networking-ingress-1bc341c84078
