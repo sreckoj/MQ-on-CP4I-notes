@@ -17,6 +17,8 @@ Networking in OpenShift and generally in Kubernetes is a large and complex topic
 
 - There are several *ingress* solutions for accessing services from the external world in basic Kubernetes. The solution that is specific to OpenShift is called *Route*. 
 
+- The OpenShift Route exposes the service to the external world by defining the *hostname* for this service (the underlying wildcard DNS records are used for that).
+
 
 
 
