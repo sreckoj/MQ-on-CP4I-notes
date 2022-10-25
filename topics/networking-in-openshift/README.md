@@ -30,7 +30,7 @@ More details can be found here:
 - General Kubernetes:
   https://kubernetes.io/docs/concepts/cluster-administration/networking/
 
-- OpenShift specifics:  
+- OpenShift:  
   https://docs.openshift.com/container-platform/4.10/networking/understanding-networking.html
 
 - Despite being a little bit older, this is a very good series of articles that explain networking in Kubernetes:
