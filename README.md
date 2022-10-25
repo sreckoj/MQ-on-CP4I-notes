@@ -29,7 +29,7 @@
 
 - ⚠️ [High availability](topics/high-availability)
 
-- 📝 [Networking in OpenShift](topics/networking-in-openshift)
+- ✅ [Networking in OpenShift](topics/networking-in-openshift)
 
 - ⚠️ [MQ management](topics/mq-management)
 
