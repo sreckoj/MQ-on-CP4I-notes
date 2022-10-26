@@ -1,6 +1,9 @@
 
 # Networking in OpenShift
 
+
+## Comments and explanation
+
 Networking in OpenShift and generally in Kubernetes is a large and complex topic. There are available plenty of books and Internet sources that cover it. We will explain here some basic concepts that are necessary to start working with CP4I and MQ. 
 
 - The basic unit of execution in Kubernetes is a *pod*. It consists of one or more containers. The containers that belong to the same pod "see" each other as they are on the "localhost".
@@ -21,11 +24,20 @@ Networking in OpenShift and generally in Kubernetes is a large and complex topic
 
 - There is one detail that is maybe not that much emphasized in the documentation but could be important for our MQ story. The route uses the HTTPS protocol. But, what is "hidden" under HTTPS is not necessarily the HTTP. HTTPS can act as an "envelope" around something that can be any other protocol. In our case MQ.
 
+The following picture summarizes the facts listed above:
 
 <img width="850" src="images/Snip20221025_9.png">
 
 
-More details can be found here:
+## DNS names
+
+**Internal connectvity**
+
+
+**Routes**
+
+
+## Additional reading
 
 - General Kubernetes:
   https://kubernetes.io/docs/concepts/cluster-administration/networking/
