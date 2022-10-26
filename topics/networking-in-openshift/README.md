@@ -42,6 +42,19 @@ For example, if we have an installation of a queue manager in the namespace (pro
 
 **Routes**
 
+There are several approaches how to create routes (please see the OpenShift [documentation](https://docs.openshift.com/container-platform/4.10/networking/routes/route-configuration.html) for details). The typical syntax of the route URL is:
+```
+<some_uniquie_hostname>.<ingress_domain>
+```
+You can obtain the *ingress domain* of your OpenShift cluster using the following command:
+```
+oc get ingresses.config/cluster -o jsonpath={.spec.domain}
+```
+
+>Hint: You can see the ingress domain in the URL of your OpenShift web console. It is the part of the URL that appears after *console-openshift-console*
+
+For example, the OpenShift web console URL of my on-prem cluster is https://console-openshift-console.apps.ocp410.demo.ibm.com/dashboards and the automatically route created for the MQ service described above is https://mq1-ibm-mq-qm-cp4i.apps.ocp410.demo.ibm.com
+ 
 
 ## Additional reading
 
