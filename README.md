@@ -23,7 +23,7 @@
 
 - 📝 [Interconnection](topics/interconnection)
 
-- ⚠️ [HTTP or MQ protocol](topics/http-or-mq-protocol)
+- ✅ [HTTP or MQ protocol](topics/http-or-mq-protocol)
   
 - ⚠️ [REST API](topics/rest-api)
 
