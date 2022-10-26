@@ -19,9 +19,9 @@
 
 - ✅ [QMgr customization](topics/qmgr-customization)
 
-- 📝 [QMGR to QMGR communication](topics/qmgr-to-qmgr-communication)
+- ✅ [QMGR to QMGR communication](topics/qmgr-to-qmgr-communication)
 
-- ⚠️ [Interconnection](topics/interconnection)
+- 📝 [Interconnection](topics/interconnection)
 
 - ⚠️ [HTTP or MQ protocol](topics/http-or-mq-protocol)
   

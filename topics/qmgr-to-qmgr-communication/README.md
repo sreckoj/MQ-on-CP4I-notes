@@ -23,4 +23,6 @@ CHLTYPE(SDR) TRPTYPE(TCP) CONNAME('qm1-ibm-mq.cp4i.svc.cluster.local(1414)')
 ## When external connection is needed
 
 
-***TODO***
+Please see the [Interconnection](../interconnection) note for the general explanation about the external connectivity.
+
+
