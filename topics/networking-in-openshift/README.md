@@ -33,6 +33,12 @@ The following picture summarizes the facts listed above:
 
 **Internal connectvity**
 
+The request can be sent to the service using its cluster IP or, which is recommended, using the internal DNS. The syntax for the internal DNS names is:
+```
+<service_name>.<namespace>.svc.cluster.local
+```
+For example, if we have an installation of a queue manager in the namespace (project) **cp4i** and if the name of the MQ instance **qm1** then the service that listens on port 1414 will be created in that namespace. Its name, by convention, will be **qm1-ibm-mq** and the service DNS name will be **qm1-ibm-mq.cp4i.svc.cluster.local** All internal applications that have to connect to the MQ can use this as a queue manager host name.
+
 
 **Routes**
 
