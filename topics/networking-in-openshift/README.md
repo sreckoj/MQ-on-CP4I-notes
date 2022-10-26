@@ -53,7 +53,7 @@ oc get ingresses.config/cluster -o jsonpath={.spec.domain}
 
 >Hint: You can see the ingress domain in the URL of your OpenShift web console. It is the part of the URL that appears after *console-openshift-console*
 
-For example, the OpenShift web console URL of my on-prem cluster is https://console-openshift-console.apps.ocp410.demo.ibm.com/dashboards and the automatically route created for the MQ service described above is https://mq1-ibm-mq-qm-cp4i.apps.ocp410.demo.ibm.com
+For example, the OpenShift web console URL of my on-prem cluster is `https://console-openshift-console.apps.ocp410.demo.ibm.com/dashboards` and the automatically created route for the MQ service described above is `https://mq1-ibm-mq-qm-cp4i.apps.ocp410.demo.ibm.com`
  
 
 ## Additional reading
