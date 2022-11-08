@@ -1,5 +1,5 @@
 
-# Connectivity between two queue managers on the same OpenShift cluster
+# Connectivity between two queue managers <br> on the same OpenShift cluster
 
 
 
