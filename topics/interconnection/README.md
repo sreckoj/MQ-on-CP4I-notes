@@ -1,9 +1,8 @@
 
 # Interconnection
 
-The OpenShift routes are used for the external access. Pleaese see [Networking in OpenShift](../networking-in-openshift)
+We have to test/explain three different situations:
 
-The following chapter from the documentation explains details: https://www.ibm.com/docs/en/ibm-mq/9.2?topic=dcqmumo-configuring-route-connect-queue-manager-from-outside-red-hat-openshift-cluster
-
->***TODO:***
->More details and an example should be added here
+1. [Accessing queue manager from the external client](external-client.md)
+2. Connectivity between two queue managers running on different OpenShift clusters
+3. [Connectivity between two queue managers on the same OpenShift cluster](two-queue-managers-internal.md)
