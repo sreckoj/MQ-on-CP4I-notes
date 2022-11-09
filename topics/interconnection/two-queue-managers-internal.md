@@ -58,10 +58,10 @@ The easiest way is to do this in OpenShift web console. Select **Workloads > Sec
 
 - Enter the secret name: **qma-tls** <br>
   and add two key/value pairs:
-  - Key: *tls.key* <br>
-    Value: drag & drop the file *qma.key*
+  - Key: **tls.key** <br>
+    Value: *drag & drop the file* **qma.key**
   - Key: *tls.crt* <br>
-    Value: drag and drop *qma.crt*
+    Value: *drag and drop the file* **qma.crt**
 
 
 
