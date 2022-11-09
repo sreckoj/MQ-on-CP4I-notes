@@ -15,3 +15,7 @@ Mounting to a pod (same for deployments). Example 2: https://docs.openshift.com/
 How to import certificates from external CAs?
 
 IBM cert manager vs Red Hat cert manager?
+
+How to secure secrets in OpenShift?
+Is it possible to store secrets on an external HSM device?
+Are there guidelines how to protect a secret inside an OpenShift cluster?
