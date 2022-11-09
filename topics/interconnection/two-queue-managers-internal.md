@@ -210,8 +210,24 @@ spec:
 ```
 
 
-
-
+The most important part of the above structures is the **pki** section. Note that it contains the **keys** entry that refers to the secret with its own private key and certificate, and the **trust** entry that refers only to the certificate of the other queue manager. For example, this is the definition for *QMA*:
+```yaml
+  pki:
+    keys:
+      - name: default
+        secret:
+          secretName: qma-tls
+          items:
+            - tls.key
+            - tls.crt
+    trust:
+      - name: qmb
+        secret:
+          secretName: qmb-tls
+          items:
+            - tls.crt
+```
+It refers to *tls.key* and *tls.crt* in secret *qma-tls* and only to *tlc.crt* in the secret *qmb-tls*:
 
 
 
