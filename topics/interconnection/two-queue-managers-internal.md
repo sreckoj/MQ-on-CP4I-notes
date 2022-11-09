@@ -72,7 +72,7 @@ The easiest way is to do this in OpenShift web console. Select **Workloads > Sec
     Value: *drag and drop the file* **qmb.crt**
 
 As a result, we have now two secrets: *qma-tls* and *qmb-tls*.
-Their YAML representations should look similar to the following. Please note that the key and certificate contents are *base64* encrypted. In the following illustration, they are also abbreviated for the sake of readability.
+Their YAML representations should look similar to the following. Please note that the key and certificate contents are *base64* encoded. In the following illustration, they are also abbreviated for the sake of readability.
 
 **qma-tls:**
 ```yaml
