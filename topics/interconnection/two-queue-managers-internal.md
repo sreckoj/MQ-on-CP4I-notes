@@ -60,10 +60,50 @@ The easiest way is to do this in OpenShift web console. Select **Workloads > Sec
   and add two key/value pairs:
   - Key: **tls.key** <br>
     Value: *drag & drop the file* **qma.key**
-  - Key: *tls.crt* <br>
+  - Key: **tls.crt** <br>
     Value: *drag and drop the file* **qma.crt**
 
 
+- Create another secret with name name: **qmb-tls** <br>
+  and add two key/value pairs:
+  - Key: **tls.key** <br>
+    Value: *drag & drop the file* **qmb.key**
+  - Key: **tls.crt** <br>
+    Value: *drag and drop the file* **qmb.crt**
+
+As a result, we have now two secrets: *qma-tls* and *qmb-tls*.
+Their YAML representations should look similar to the following. Please note that the key and certificate contents are *base64* encrypted. In the following illustration, they are also abbreviated for the sake of readability.
+
+**qma-tls:**
+```yaml
+kind: Secret
+apiVersion: v1
+metadata:
+  name: qma-tls
+  namespace: mq
+data:
+  tls.crt: >-
+    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURTRENDQWpBQ0NRQ2pz...
+  tls.key: >-
+    LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2d0lCQURBTkJna3Fo...
+type: Opaque
+```
+
+**qmb-tls:**
+```yaml
+kind: Secret
+apiVersion: v1
+metadata:
+  name: qmb-tls
+  namespace: mq
+data:
+  tls.crt: >-
+    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURTRENDQWpBQ0NRQ3E5...
+  tls.key: >-
+    LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2QUlCQURBTkJna3Fo...
+type: Opaque
+
+```
 
 
 
