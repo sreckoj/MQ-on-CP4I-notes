@@ -44,6 +44,48 @@ Common Name (eg, fully qualified host name) []:test.acme.com
 Email Address []:test.user@acme.com
 ```
 
+As a result, we have the following files:
+```
+qma.crt
+qma.key
+qmb.crt
+qmb.key    
+```
+
+## Create secrets
+
+The easiest way is to do this in OpenShift web console. Select **Workloads > Secrets** on the navigation panel and then select the project, in our case it is **mq**. Click on the button **Create** and select **Key/value secret**. 
+
+- Enter the secret name: **qma-tls** and add two key/value pairs:
+  - Key: tls.key* <br>
+    Value: drag & drop the file *qma.key*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
