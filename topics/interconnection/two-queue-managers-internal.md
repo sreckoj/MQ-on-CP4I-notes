@@ -106,7 +106,108 @@ type: Opaque
 ```
 
 
+## Create queue managers
 
+Use the CP4I Platform Navigator or the OpenShift interfaces to create queue managers with a structure similar to the following examples:
+
+>Note: If you copy/paste the examples, please change *license.accept* to *true* before using 
+
+**QMA:**
+```yaml
+apiVersion: mq.ibm.com/v1beta1
+kind: QueueManager
+metadata:
+  name: qma
+  namespace: mq
+spec:
+  license:
+    accept: false
+    license: L-RJON-CD3JKX
+    use: NonProduction
+  queueManager:
+    name: QMA
+    resources:
+      limits:
+        cpu: 500m
+      requests:
+        cpu: 500m
+    storage:
+      queueManager:
+        type: ephemeral
+  template:
+    pod:
+      containers:
+        - env:
+            - name: MQSNOAUT
+              value: 'yes'
+          name: qmgr
+  version: 9.3.0.1-r2
+  web:
+    enabled: true
+  pki:
+    keys:
+      - name: default
+        secret:
+          secretName: qma-tls
+          items:
+            - tls.key
+            - tls.crt
+    trust:
+      - name: qmb
+        secret:
+          secretName: qmb-tls
+          items:
+            - tls.crt
+
+```
+
+**QMB:**
+```yaml
+apiVersion: mq.ibm.com/v1beta1
+kind: QueueManager
+metadata:
+  name: qmb
+  namespace: mq
+spec:
+  license:
+    accept: false
+    license: L-RJON-CD3JKX
+    use: NonProduction
+  queueManager:
+    name: QMB
+    resources:
+      limits:
+        cpu: 500m
+      requests:
+        cpu: 500m
+    storage:
+      queueManager:
+        type: ephemeral
+  template:
+    pod:
+      containers:
+        - env:
+            - name: MQSNOAUT
+              value: 'yes'
+          name: qmgr
+  version: 9.3.0.1-r2
+  web:
+    enabled: true
+  pki:
+    keys:
+      - name: default
+        secret:
+          secretName: qmb-tls
+          items:
+            - tls.key
+            - tls.crt
+    trust:
+      - name: qma
+        secret:
+          secretName: qma-tls
+          items:
+            - tls.crt
+```
 
 
 
