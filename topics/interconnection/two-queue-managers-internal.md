@@ -227,28 +227,26 @@ The most important part of the above structures is the **pki** section. Note tha
           items:
             - tls.crt
 ```
-It refers to *tls.key* and *tls.crt* in secret *qma-tls* and only to *tlc.crt* in the secret *qmb-tls*:
+It refers to *tls.key* and *tls.crt* in secret *qma-tls* and only to *tls.crt* in the secret *qmb-tls*:
 
 
+## Create MQ objects for testing
 
+On **QMA** side create:
+- Transmission queue: **QMA.TO.QMB**
+- Remote queue definition **TESTQ** with the following properties:
+  - Remote queue: **TESTQ**
+  - Remote queue manager: **QMB**
+  - Transmission queue: **QMA.TO.QMB**
+- Sender channel: **QMA.TO.QMB** with the following properties:
+  - Connection name: **qmb-ibm-mq.mq.svc.cluster.local(1414)**
+  - Transmission queue: **QMA.TO.QMB**
 
+On **QMB** side create:
+- Local queue: **TESTQ**
+- Receiver channel: **QMA.TO.QMB**
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Start the sender channel. Put a message to *TESTQ* on *QMA*. It must appear in the queue *TESTQ* on *QMB* queue manager. 
 
 
 
