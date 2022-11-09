@@ -5,7 +5,7 @@
 
 Assumptions:
   - Queue managers names: **QMA**, **QMB**
-  - Both queue managers in the same namespace: **mq*
+  - Both queue managers in the same namespace: **mq**
 
 
 ## Create certificates
