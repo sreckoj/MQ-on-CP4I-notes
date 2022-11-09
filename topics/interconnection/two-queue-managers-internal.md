@@ -56,9 +56,13 @@ qmb.key
 
 The easiest way is to do this in OpenShift web console. Select **Workloads > Secrets** on the navigation panel and then select the project, in our case it is **mq**. Click on the button **Create** and select **Key/value secret**. 
 
-- Enter the secret name: **qma-tls** and add two key/value pairs:
-  - Key: tls.key* <br>
+- Enter the secret name: **qma-tls** <br>
+  and add two key/value pairs:
+  - Key: *tls.key* <br>
     Value: drag & drop the file *qma.key*
+  - Key: *tls.crt* <br>
+    Value: drag and drop *qma.crt*
+
 
 
 
