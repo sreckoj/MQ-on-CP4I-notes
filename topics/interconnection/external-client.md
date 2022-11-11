@@ -232,7 +232,7 @@ Here are some examples of the client configuration:
                 "port": 443
               }
             ],
-            "queueManager": "QM2"
+            "queueManager": "QM1"
           },
           "transmissionSecurity":
           {
