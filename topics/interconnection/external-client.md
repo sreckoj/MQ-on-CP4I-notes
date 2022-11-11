@@ -54,3 +54,118 @@ server.crt
 server.key
 ```
 
+## Create secrets
+
+The easiest way is to do this in OpenShift web console. Select **Workloads > Secrets** on the navigation panel and then select the project, in our case it is **mq**. Click on the button **Create** and select **Key/value secret**. 
+
+- Enter the secret name: **mq-server-tls** <br>
+  and add two key/value pairs:
+  - Key: **tls.key** <br>
+    Value: *drag & drop the file* **server.key**
+  - Key: **tls.crt** <br>
+    Value: *drag and drop the file* **server.crt**
+
+
+- Create another secret with name name: **mq-mq-client-tls** <br>
+  and add two key/value pairs:
+  - Key: **tls.key** <br>
+    Value: *drag & drop the file* **client.key**
+  - Key: **tls.crt** <br>
+    Value: *drag and drop the file* **client.crt**
+
+As a result, we have now two secrets: *mq-server-tls* and *mq-client-tls*.
+Their YAML representations should look similar to the following. Please note that the key and certificate contents are *base64* encoded. In the following illustration, they are also abbreviated for the sake of readability.
+
+**mq-server-tls:**
+```yaml
+kind: Secret
+apiVersion: v1
+metadata:
+  name: mq-server-tls
+  namespace: mq
+data:
+  tls.crt: >-
+    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURVakNDQWpvQ0N...
+  tls.key: >-
+    LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2d0lCQURBTkJ...
+type: Opaque
+
+```
+
+**mq-client-tls**
+```yaml
+kind: Secret
+apiVersion: v1
+metadata:
+  name: mq-client-tls
+  namespace: mq
+data:
+  tls.crt: >-
+    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURVakNDQWpvQ0N...
+  tls.key: >-
+    LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2Z0lCQURBTkJ...
+type: Opaque
+
+```
+
+## Create MQ instance
+
+Create an instance with the following properties (please change *license.accept* to *true* if you copy/paste this YAML). Please note the **pki** section. We refer to the queue manager's key and the certificate in the keystore and client's certificate in the truststore:
+```yaml
+apiVersion: mq.ibm.com/v1beta1
+kind: QueueManager
+metadata:
+  name: mq1
+  namespace: mq
+spec:
+  license:
+    accept: true
+    license: L-RJON-CD3JKX
+    use: NonProduction
+  queueManager:
+    name: QM1
+    resources:
+      limits:
+        cpu: 500m
+      requests:
+        cpu: 500m
+    storage:
+      queueManager:
+        type: ephemeral
+  template:
+    pod:
+      containers:
+        - env:
+            - name: MQSNOAUT
+              value: 'yes'
+          name: qmgr
+  version: 9.3.0.1-r2
+  web:
+    enabled: true
+  pki:
+    keys:
+      - name: default
+        secret:
+          secretName: mq-server-tls
+          items:
+            - tls.key
+            - tls.crt
+    trust:
+      - name: app
+        secret:
+          secretName: mq-client-tls
+          items:
+            - tls.crt
+```
+
+
+
+
+
+
+
+
+
+
+
+
