@@ -158,14 +158,90 @@ spec:
             - tls.crt
 ```
 
+## Configure the queue manager
+
+Apply the following properties:
+- CHLAUTH records: **disabled**
+- Server-connection channel: **DEV.APP.SVRCONN**
+  - MCA user: **mqm**
+  - SSL cipher: **ANY_TLS12**
+
+Create local queue: **DEV.QUEUE.1**
 
 
+## Create additional route
 
 
+By the rules described in this document:
+https://www.ibm.com/support/pages/ibm-websphere-mq-how-does-mq-provide-multiple-certificates-certlabl-capability
+the SNI name of the channel **DEV.APP.SVRCONN** should be **dev2e-app2e-svrconn.chl.mq.ibm.com**
 
+Use the following YAML to create the route:
+```yaml
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: mq1-ibm-mq-qm-traffic-dev
+  namespace: mq
+spec:
+  host: dev2e-app2e-svrconn.chl.mq.ibm.com
+  to:
+    kind: Service
+    name: mq1-ibm-mq
+  port:
+    targetPort: 1414
+  tls:
+    termination: passthrough
+```
 
+Note that it points to the same service as the default route, only the host name represents the channel. 
 
+## Configure client
 
+Here are several examples of the client configuration:
 
+- Client properties:
+  ```
+  QUEUE_MANAGER=QM1
+  CHANNEL=DEV.APP.SVRCONN
+  CONN_NAME=mq1-ibm-mq-qm-mq.apps.ocp410.tec.uk.ibm.com(443)
+  ```
 
+- In the case of using RFHUTIL for testing:
+  ```
+  DEV.APP.SVRCONN/TCP/mq1-ibm-mq-qm-mq.apps.ocp410.tec.uk.ibm.com(443)
+  ```
 
+- CCDT
+  ```json
+  {
+      "channel":
+      [
+        {
+          "general":
+          {
+            "description": "MQ Dev Channel"
+          },
+          "name": "DEV.APP.SVRCONN",
+          "clientConnection":
+          {
+            "connection":
+            [
+              {
+                "host": "/mq1-ibm-mq-qm-mq.apps.ocp410.tec.uk.ibm.com",
+                "port": 443
+              }
+            ],
+            "queueManager": "QM2"
+          },
+          "transmissionSecurity":
+          {
+            "cipherSpecification": "ANY_TLS12"
+          },
+          "type": "clientConnection"
+        }
+      ]
+  }
+  ```  
+
+>Note: The expression `apps.ocp410.tec.uk.ibm.com` in the above examples is the ingress domain name of the OpenShift cluster used for testing durung the preparation of this document. 
