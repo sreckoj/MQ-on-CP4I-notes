@@ -241,10 +241,12 @@ On **QMA** side create:
 - Sender channel: **QMA.TO.QMB** with the following properties:
   - Connection name: **qmb-ibm-mq.mq.svc.cluster.local(1414)**
   - Transmission queue: **QMA.TO.QMB**
+  - SSL > SSL Cipher spec: **ANY_TLS12** (switch to *Custom create* tab to see this property)
 
 On **QMB** side create:
 - Local queue: **TESTQ**
 - Receiver channel: **QMA.TO.QMB**
+  - SSL > SSL Cipher spec: **ANY_TLS12** (switch to *Custom create* tab to see this property)
 
 Start the sender channel. Put a message to *TESTQ* on *QMA*. It must appear in the queue *TESTQ* on *QMB* queue manager. 
 
