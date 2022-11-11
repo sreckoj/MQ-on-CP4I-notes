@@ -13,3 +13,44 @@ Please note that the [Server Name Indication](https://www.rfc-editor.org/rfc/rfc
 ## Create certificates
 
 For demo purposes, we will create self-signed certificates.
+
+Create a server key (this will be used for the queue manager):
+```
+openssl req -newkey rsa:2048 -nodes -keyout server.key -x509 -days 365 -out server.crt
+```
+
+When asked, enter the certificate details, for example:
+```
+Country Name (2 letter code) []:DE
+State or Province Name (full name) []:.
+Locality Name (eg, city) []:.
+Organization Name (eg, company) []:ACME
+Organizational Unit Name (eg, section) []:Test
+Common Name (eg, fully qualified host name) []:test.acme.com
+Email Address []:test.user@acme.com
+```
+
+Repeat the same for the client:
+```
+openssl req -newkey rsa:2048 -nodes -keyout client.key -x509 -days 365 -out client.crt
+```
+
+Enter details:
+```
+Country Name (2 letter code) []:DE
+State or Province Name (full name) []:.
+Locality Name (eg, city) []:.
+Organization Name (eg, company) []:ACME
+Organizational Unit Name (eg, section) []:Test
+Common Name (eg, fully qualified host name) []:test.acme.com
+Email Address []:test.user@acme.com
+```
+
+As a result, we have the following files:
+```
+client.crt
+client.key
+server.crt
+server.key
+```
+
