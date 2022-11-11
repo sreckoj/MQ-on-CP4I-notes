@@ -119,7 +119,7 @@ metadata:
   namespace: mq
 spec:
   license:
-    accept: true
+    accept: false
     license: L-RJON-CD3JKX
     use: NonProduction
   queueManager:
