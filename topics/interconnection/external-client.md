@@ -198,7 +198,7 @@ Note that it points to the same service as the default route, only the host name
 
 ## Configure client
 
-Here are several examples of the client configuration:
+Here are some examples of the client configuration:
 
 - Client properties:
   ```
