@@ -27,7 +27,7 @@
   
 - ⚠️ [REST API](topics/rest-api)
 
-- ⚠️ [High availability](topics/high-availability)
+- 📝 [High availability](topics/high-availability)
 
 - ✅ [Networking in OpenShift](topics/networking-in-openshift)
 
