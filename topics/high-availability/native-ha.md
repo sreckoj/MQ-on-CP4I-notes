@@ -34,7 +34,7 @@ There will be also persistent volume claims created for each of the pods:
 
 ## Configure manually by applying the YAML files
 
-You can create the NativeHA configuration by applying the YAML files using the OpenShift CLI or OpenShift web console. Let's assume here a bit more complex example that includes also an MQSC script executed when the pods are started and TLS configuration (if needed, see [Working with the self-signed certificates](../../miscellaneous/self-signed-certs.md) for the instructions on how to create the self-signed certificates). The following example assumes that we work in the *mq* namespace and shows the "all-in-one" YAML structure:
+You can create the NativeHA configuration by applying the YAML files using the OpenShift CLI or OpenShift web console. Let's assume here a bit more complex example that includes also an MQSC script executed when the pods are started and TLS configuration (if needed, see [Working with the self-signed certificates](../../topics/miscellaneous/self-signed-certs.md) for the instructions on how to create the self-signed certificates). The following example assumes that we work in the *mq* namespace and shows the "all-in-one" YAML structure:
 
 >**Note:** If you decide to copy/paste the following example, change *spec.license.accept* to *true*  
 
