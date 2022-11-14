@@ -18,3 +18,5 @@
 ## High availability options
 
 - [NativeHA](native-ha.md)
+- [Multiinstance](multiinstnce.md)
+- [Uniform cluster](uniform-cluster.md) (*This is actually a workload-balancing solution but can be also useful in situations of solving high-availability problems*)
