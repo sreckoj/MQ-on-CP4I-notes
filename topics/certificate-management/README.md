@@ -6,7 +6,7 @@ Please see [Accessing from the external client](../interconnection/external-clie
 
 - [Create self-signed certificates](../interconnection/external-client.md#create-certificates) (in production they, of course, must be issued by the CA)
 - [Create secrets that hold the certificates](../interconnection/external-client.md#create-secrets)
-- [Create queue manager with the keystore and truststore definitions that refer to the secrets](..interconnection/external-client.md#create-mq-instance)
+- [Create queue manager with the keystore and truststore definitions that refer to the secrets](../interconnection/external-client.md#create-mq-instance)
 
 Please see also this, similar, example: [Connectivity between two queue managers on the same OpenShift cluster](../interconnection/two-queue-managers-internal.md) 
 
