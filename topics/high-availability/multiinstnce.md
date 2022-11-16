@@ -1,8 +1,12 @@
 
 # IBM MQ - Multi-instance
 
+This document contains two parts:
+- [Create a multi-instance queue manager using the Platform Navigator](#navigator)
+- [Create a multi-instance queue manager manually by applying the YAML definition](#manually)
 
 
+<a name="navigator"></a>
 ## Create a multi-instance queue manager using the Platform Navigator
 
 Navigate to Integration instances and click on Create an instance
@@ -126,6 +130,7 @@ spec:
     enabled: true
 ```
 
+<a name="manually"></a>
 ## Create a multi-instance queue manager manually by applying the YAML definition
 
 The following example shows an "all-in-one" YAML that describes a bit more complex configuration. It includes:
