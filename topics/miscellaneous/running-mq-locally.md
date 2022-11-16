@@ -14,12 +14,26 @@ docker run --name mymq --rm -e LICENSE=accept --volume /root/mq_test:/mnt/test -
 
 Enter "into" the container:
 ```
-docker exec -it mymq \bin\bash
+docker exec -it mymq bash
 ```
 
 Navigate to the directory with the artifacts:
 ```
 cd /mnt/test/
 ```
+
+Exit the container
+```
+exit
+```
+
+Stop container
+```
+docker stop mymq
+```
+
+Because the container was created with option *--rm* it will be automatically deleted after the stop and can be recreated with the same name.
+
+
 
 
