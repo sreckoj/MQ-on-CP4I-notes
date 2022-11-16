@@ -33,7 +33,7 @@
 
 - ⚠️ [MQ management](topics/mq-management)
 
-- ⚠️ [Certificate management](topics/certificate-management)
+- 📝 [Certificate management](topics/certificate-management)
 
 - ⚠️ [Configure DNS](topics/configure-dns)
 
