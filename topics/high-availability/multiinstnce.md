@@ -142,7 +142,7 @@ The following example shows an "all-in-one" YAML that describes a bit more compl
 You can apply the YAML using the command line: `oc apply -f <file-with-the-yaml-content>` <br>
 or using the OpenShift web console: 
 
-<img width="850" src="images/Snip20221116_104.png">
+<img width="850" src="images/Snip20221116_105.png">
 
 ```yaml
 kind: ConfigMap
