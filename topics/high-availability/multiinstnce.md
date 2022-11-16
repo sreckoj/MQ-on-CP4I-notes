@@ -126,16 +126,23 @@ spec:
     enabled: true
 ```
 
+## Create a multi-instance queue manager manually by applying the YAML definition
+
 The following example shows an "all-in-one" YAML that describes a bit more complex configuration. It includes:
 - a set of MQSC commands that are executed when the pod is created
 - TLS configuration (for the instructions on how to create the self-signed certificates, please see [Working with the self-signed certificates](../../topics/miscellaneous/self-signed-certs.md))
 - an additional route that points to the channel and is used for external access (please see [Accessing from the external client](../interconnection/external-client.md))
 
-We assume that the instance is created in the namespace called *mq*. Please change it if you are applying this in another namespace.
+>**Note:** We assume that the instance is created in the namespace called *mq*. Please change it if you are applying this in another namespace.
 
-The storage class defined in the queue manager YAML is *rook-cephfs* Please change it to the RWX class available in your environment. 
+>**Note:** The storage class defined in the queue manager YAML is *rook-cephfs* Please change it to the RWX class available in your environment. 
 
 >**Note:** For legal reasons the value of queue manager's *spec.license.accept* is set to *false*. Please change it to *true* if you are copying/pasting the example.
+
+You can apply the YAML using the command line: `oc apply -f <file-with-the-yaml-content>` <br>
+or using the OpenShift web console: 
+
+<img width="850" src="images/Snip20221116_104.png">
 
 ```yaml
 kind: ConfigMap
