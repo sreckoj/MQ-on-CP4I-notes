@@ -25,7 +25,7 @@
 
 - ✅ [HTTP or MQ protocol](topics/http-or-mq-protocol)
   
-- ⚠️ [REST API](topics/rest-api)
+- ✅ [REST API](topics/rest-api)
 
 - 📝 [High availability](topics/high-availability)
 
