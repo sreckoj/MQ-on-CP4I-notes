@@ -7,7 +7,7 @@ In the IBM MQ context, the ConfigMaps are mostly used for the MQSC scripts that 
 
 Please see the following notes from this collection:
 - [Additional configuration](../additional-configuration)
-- [QMgr customization](qmgr-customization)
+- [QMgr customization](../qmgr-customization)
 
 and the following chapter from the documentation:
 - [Supplying MQSC and INI files](https://www.ibm.com/docs/en/ibm-mq/9.2?topic=manager-example-supplying-mqsc-ini-files)
