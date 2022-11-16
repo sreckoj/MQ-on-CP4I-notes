@@ -32,7 +32,7 @@ Stop container
 docker stop mymq
 ```
 
-Because the container was created with option *--rm* it will be automatically deleted after the stop and can be recreated with the same name.
+Because the container was created with option *--rm* it will be automatically deleted after the stop and can be recreated with the same name. The alternative is to run it without this option and restart it later with `docker start mymq`
 
 
 
