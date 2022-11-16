@@ -59,7 +59,7 @@ docker run --name mymq --rm -e LICENSE=accept --volume /root/tutorials/ssl:/mnt/
 
 Enter "into" the container (we assume here the container name *mymq*, we can use also the GUID instead of the name:
 ```
-docker exec -it mymq \bin\bash
+docker exec -it mymq bash
 ```
 
 
