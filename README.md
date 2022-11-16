@@ -45,7 +45,7 @@
 
 - ⚠️ [Description of the YML files](topics/description-of-yamls)
 
-- ⚠️ [ConfigMap](topics/config-map)
+- ✅ [ConfigMap](topics/config-map)
 
 - ⚠️ [MQ Backup](topics/mq-backup)
 
