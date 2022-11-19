@@ -15,3 +15,9 @@ https://www.ibm.com/docs/en/ibm-mq/9.3?topic=mq-messaging-using-rest-api
 
 The detailed description of each API call is documented here: <br>
 https://www.ibm.com/docs/en/ibm-mq/9.3?topic=mrar-rest-api-resources
+
+
+## Tutorial
+
+Please see the following gettng-started tutorial: <br>
+https://developer.ibm.com/tutorials/mq-develop-mq-rest-api/
