@@ -39,7 +39,7 @@
 
 - ⚠️ [MQ-IPT](topics/mq-ipt)
 
-- ⚠️ [Best Practices](topics/best-practices)
+- 📝 [Best Practices](topics/best-practices)
 
 - ⚠️ [Language settings](topics/language-settings)
 
