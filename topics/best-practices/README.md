@@ -1,7 +1,7 @@
 
 # Best Practices
 
-## Open questins...
+## Open questions...
 
 How to manage MQ configurations on a central system - eg in GIT: See CP Production Deployment Guides for a Gitops approach to MQ and ACE: https://production-gitops.dev/quickstart/quickstart-mq/ 
 and https://production-gitops.dev/quickstart/quickstart-ace/
