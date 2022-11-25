@@ -25,6 +25,7 @@ Centralized certificate management.
     - Simpler, more intuitive health checking
     - Promotes reuse of container images
     - Easier to retrieve logs, do problem determination
+
 - **Small, decentralized queue managers**
   - *Steps*
     - Queue manager per application instead of shared by multiple applications
@@ -33,7 +34,8 @@ Centralized certificate management.
     - More agile teams with direct ownership
     - Fine grained resilience to failures or outages
     - Reduce app/QM version compatibility problems
-    - Easier to schedule maintenance windows
+     - Easier to schedule maintenance windows
+
 - **Data availability using external storage**
   - *Steps*
     - Store queue manager data on Persistent Volume outside the container
@@ -42,6 +44,7 @@ Centralized certificate management.
     - Enables failover to other workers in the cluster
     - Simplifies applying upgrades or fixes
     - Supports ephemeral and immutable container approaches
+
 - **Continuous availability through horizontal scaling**
   - *Steps*
     - Deploy two or more equivalent queue managers
@@ -50,6 +53,7 @@ Centralized certificate management.
     - Zero downtime for planned upgrades
     - Continue to serve new workload in the event of a failure / failover
     - Scale based on workload requirements
+    
 - **Immutable containers**
   - *Steps*
     - Configuration of queue manager is controlled exclusively by a runmqsc script on startup
