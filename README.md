@@ -6,6 +6,11 @@
 > - 📝  - means "in the process - partly answered"
 > - ⚠️  - means "waiting for the answer"
 
+
+>Please see also the following source: <br>
+>https://production-gitops.dev/guides/cp4i/mq/using/this-guide/
+
+
 <br>
 
 **The table of contents:**
