@@ -8,8 +8,9 @@
 
 
 ---
->Please see also the following source: <br>
->https://production-gitops.dev/guides/cp4i/mq/using/this-guide/
+Please see also the following source: <br>
+https://production-gitops.dev/guides/cp4i/mq/using/this-guide/
+
 ---
 
 <br>
