@@ -34,7 +34,7 @@ https://production-gitops.dev/guides/cp4i/mq/using/this-guide/
   
 - ✅ [REST API](topics/rest-api)
 
-- 📝 [High availability](topics/high-availability)
+- ✅ [High availability](topics/high-availability)
 
 - ✅ [Networking in OpenShift](topics/networking-in-openshift)
 

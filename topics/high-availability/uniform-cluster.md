@@ -8,3 +8,6 @@ See the content of the files including the comments. <br>
 - [delete_cluster.sh](uniform-cluster/delete_cluster.sh) removes the cluster using previously created YAMLs 
 - [tmpl-qm.yaml](uniform-cluster/tmpl-qm.yaml) is a template for queue managers
 - [tmpl-cm.yaml](uniform-cluster/tmpl-cm.yaml) is a template for the config map that contains the cluster configuration. This is the most important file. Please review its content. 
+
+
+>**Important note**: If you decide to change the YAML templates, make sure that there is an additional newline character at the last line of code otherwise the script that generates YAMLs from the templates will not work correctly
