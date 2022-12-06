@@ -1,0 +1,106 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mq-cluster-conf
+  namespace: $TARGET_NAMESPACE
+data:
+  common.mqsc: |
+    * ------------------------------
+    * Dead letter queue and listener
+    * ------------------------------
+    ALTER QMGR DEADQ(SYSTEM.DEAD.LETTER.QUEUE)
+    DEFINE LISTENER(LSTR.TCP) TRPTYPE( TCP )
+    ALTER LISTENER(LSTR.TCP) TRPTYPE( TCP ) PORT(1414)
+    START LISTENER(LSTR.TCP)    
+    * ---------------------------------------------
+    * Disable security (for the sake of simplicity)
+    * ---------------------------------------------
+    ALTER QMGR CHLAUTH (DISABLED)
+    ALTER AUTHINFO(SYSTEM.DEFAULT.AUTHINFO.IDPWOS) AUTHTYPE(IDPWOS) CHCKCLNT(NONE) CHCKLOCL(NONE)
+    REFRESH SECURITY TYPE(CONNAUTH)
+  qm1.mqsc: |
+    * --------------------------
+    * Full repository
+    * --------------------------
+    ALTER QMGR REPOS($CLUSTER_NAME)
+    * --------------------------
+    * Cluster receiver for QM1
+    * --------------------------
+    DEFINE CHANNEL($CLUSTER_NAME.QM1) CHLTYPE(CLUSRCVR) TRPTYPE(TCP) + 
+    CONNAME('qm1-ibm-mq.$TARGET_NAMESPACE.svc.cluster.local(1414)') + 
+    CLUSTER($CLUSTER_NAME) REPLACE 
+    * -----------------------------------------
+    * Cluster sender to QM2 (other full repo)
+    * -----------------------------------------
+    DEFINE CHANNEL($CLUSTER_NAME.QMC2) CHLTYPE(CLUSSDR) TRPTYPE(TCP) + 
+    CONNAME('qm2-ibm-mq.$TARGET_NAMESPACE.svc.cluster.local(1414)') + 
+    CLUSTER($CLUSTER_NAME) REPLACE
+    * ------------------
+    * Test cluster queue
+    * ------------------
+    DEF QL(CLUSQ1) CLUSTER($CLUSTER_NAME) DEFBIND(NOTFIXED) CLWLUSEQ(ANY)
+  qm2.mqsc: |
+    * --------------------------
+    * Full repository
+    * --------------------------
+    ALTER QMGR REPOS($CLUSTER_NAME)
+    * --------------------------
+    * Cluster receiver for QM2
+    * --------------------------
+    DEFINE CHANNEL($CLUSTER_NAME.QM2) CHLTYPE(CLUSRCVR) TRPTYPE(TCP) + 
+    CONNAME('qm2-ibm-mq.$TARGET_NAMESPACE.svc.cluster.local(1414)') + 
+    CLUSTER($CLUSTER_NAME) REPLACE 
+    * -----------------------------------------
+    * Cluster sender to QM1 (other full repo)
+    * -----------------------------------------
+    DEFINE CHANNEL($CLUSTER_NAME.QMC1) CHLTYPE(CLUSSDR) TRPTYPE(TCP) + 
+    CONNAME('qm1-ibm-mq.$TARGET_NAMESPACE.svc.cluster.local(1414)') + 
+    CLUSTER($CLUSTER_NAME) REPLACE
+    * ------------------
+    * Test cluster queue
+    * ------------------
+    DEF QL(CLUSQ1) CLUSTER($CLUSTER_NAME) DEFBIND(NOTFIXED) CLWLUSEQ(ANY)
+  qm3.mqsc: |
+    * --------------------------
+    * Partial repository
+    * Cluster receiver for QM3
+    * --------------------------
+    DEFINE CHANNEL($CLUSTER_NAME.QM3) CHLTYPE(CLUSRCVR) TRPTYPE(TCP) + 
+    CONNAME('qm3-ibm-mq.$TARGET_NAMESPACE.svc.cluster.local(1414)') + 
+    CLUSTER($CLUSTER_NAME) REPLACE 
+    * ---------------------------------
+    * Cluster sender to QM1 (full repo)
+    * ---------------------------------
+    DEFINE CHANNEL($CLUSTER_NAME.QMC1) CHLTYPE(CLUSSDR) TRPTYPE(TCP) + 
+    CONNAME('qm1-ibm-mq.$TARGET_NAMESPACE.svc.cluster.local(1414)') + 
+    CLUSTER($CLUSTER_NAME) REPLACE
+    * ------------------
+    * Test cluster queue
+    * ------------------
+    DEF QL(CLUSQ1) CLUSTER($CLUSTER_NAME) DEFBIND(NOTFIXED) CLWLUSEQ(ANY)
+  qm4.mqsc: |
+    * --------------------------
+    * Partial repository
+    * Cluster receiver for QM4
+    * --------------------------
+    DEFINE CHANNEL($CLUSTER_NAME.QM4) CHLTYPE(CLUSRCVR) TRPTYPE(TCP) + 
+    CONNAME('qm4-ibm-mq.$TARGET_NAMESPACE.svc.cluster.local(1414)') + 
+    CLUSTER($CLUSTER_NAME) REPLACE 
+    * ---------------------------------
+    * Cluster sender to QM1 (full repo)
+    * ---------------------------------
+    DEFINE CHANNEL($CLUSTER_NAME.QMC1) CHLTYPE(CLUSSDR) TRPTYPE(TCP) + 
+    CONNAME('qm1-ibm-mq.$TARGET_NAMESPACE.svc.cluster.local(1414)') + 
+    CLUSTER($CLUSTER_NAME) REPLACE
+    * ------------------
+    * Test cluster queue
+    * ------------------
+    DEF QL(CLUSQ1) CLUSTER($CLUSTER_NAME) DEFBIND(NOTFIXED) CLWLUSEQ(ANY)
+  qm.ini: |
+    AutoCluster:
+      ClusterName=$CLUSTER_NAME
+      Type=Uniform
+      Repository2Conname='mq2-ibm-mq.$TARGET_NAMESPACE.svc.cluster.local(1414)'
+      Repository2Name=QM2
+      Repository1Conname='mq1-ibm-mq.$TARGET_NAMESPACE.svc.cluster.local(1414)'
+      Repository1Name=QM1
