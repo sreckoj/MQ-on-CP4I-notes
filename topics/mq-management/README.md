@@ -8,7 +8,11 @@ This question is related to one of the main differences between traditional and 
 
 In Kubernetes environments, the containers run in [pods](https://kubernetes.io/docs/concepts/workloads/pods/). A pod is a minimal unit of execution. Despite it is possible to manually create and start pods, they are usually controlled by other Kubernetes objects like [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) and [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/). Please use the links provided here to read more about those objects.
 
-We cannot stop the pod and leave it in some kind of "stopped" state. Even if we try to kill the pod, it will be automatically restarted. 
+We cannot stop the pod and leave it in some kind of "stopped" state. Even if we try to kill the pod, it will be automatically restarted. What we can do instead is to tell the control objects to reduce the number of pod replicas to zero.
+
+The MQ pods are managed by the StatefulSets. We can use the OpenShift console to decrease number of instances to zero:
+
+<img width="850" src="images/Snip20221207_3.png"> 
 
 
 
