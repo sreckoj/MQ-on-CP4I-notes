@@ -38,7 +38,7 @@ https://production-gitops.dev/guides/cp4i/mq/using/this-guide/
 
 - ✅ [Networking in OpenShift](topics/networking-in-openshift)
 
-- 📝 [MQ management](topics/mq-management)
+- ✅ [MQ management](topics/mq-management)
 
 - 📝 [Certificate management](topics/certificate-management)
 

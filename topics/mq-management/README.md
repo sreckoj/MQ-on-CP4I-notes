@@ -14,21 +14,40 @@ The MQ pods are managed by the StatefulSets. We can use the OpenShift console to
 
 <img width="850" src="images/Snip20221207_3.png"> 
 
+You can do the same from the command line. Login to the OpenShift and navigate to the project where the instance of the MQ is running. Let's say that the project name is also *mq*:
+```
+oc project mq
+```
+List the stateful sets:
+```
+oc get statefulsets
+```
+Let's assume that the command returns the following result:
+```
+NAME         READY   AGE
+qm1-ibm-mq   1/1     37h
+```
+You can stop the queue manager by decreasing the number of replicas to zero:
+```
+oc scale statefulset/qm1-ibm-mq --replicas 0
+```
+You can start it again by increasing the replicas back to one:
+```
+oc scale statefulset/qm1-ibm-mq --replicas 1
+```
+
+Please note that while the number of replicas is zero, the Platform Navigator will show the error for the MQ instance, this is expected behavior:
+
+<img width="850" src="images/Snip20221209_7.png">
+
+>It is theoretically possible to navigate into the container using the command line or OpenShift web console and run commands *endmqm* and *strmqm* as in the traditional environment. Stopping the queue manager in that way will also stop the container inside the pod. This can cause unpredictable side effects and it is better to avoid it.
 
 
+## Investigating issues
 
->*Questions discussed here:*
->
->How to stop or start a QMgr?
->
->Scale down replicas of deployment to 0 -> oc scale deployment/<deployment name> --replicas 0
->
->https://docs.openshift.com/container-platform/4.11/support/troubleshooting/investigating-pod-issues.html#accessing-running-pods_investigating-pod-issues
->
->Stop QMgr via command line
->
->How to stop or start a Pod?
->
->Pods will restart automatically. Interact with the deployment/deployment config as described above.
->
->If something is stuck, just delete the pod and it will be recreated -> oc delete pod/<pod> -n <namespace>
+Please see the following article that describes in detail some basic methods of investigating the pod issues: https://docs.openshift.com/container-platform/4.10/support/troubleshooting/investigating-pod-issues.html#accessing-running-pods_investigating-pod-issues
+
+Very often a quick solution for problems in Kubernetes is deleting the pods. If something is stuck, just delete the pod and it will be recreated:
+```
+oc delete pod/<pod> -n <namespace>
+```
