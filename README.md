@@ -1,7 +1,11 @@
 
 # IBM MQ on CP4I notes
 
->UNDER CONSTRUCTION!
+
+>NOTE: This document is based on questions from users who are already experienced with the IBM MQ running in traditional environments and are starting to use MQ on OpenShift on top of the IBM Cloud Pak for Integration. 
+>
+>Each entry is currently marked with status sign:
+>
 > - ✅  - means "completed"
 > - 📝  - means "in the process - partly answered"
 > - ⚠️  - means "waiting for the answer"
