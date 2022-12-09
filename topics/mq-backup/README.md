@@ -21,3 +21,10 @@ To understand those concepts, please see the following documents:
 - [Volumes (Kubernetes)](https://kubernetes.io/docs/concepts/storage/volumes/)
 - [Persisten Volumes (Kubernetes)](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
 - [Storage Overview (OpenShift)](https://docs.openshift.com/container-platform/4.10/storage/index.html)
+
+The backup/restore questions are often related to the backup/restore of the external storage.
+
+For the backup/restore of the OpenShift cluster, please see the following document:
+https://docs.openshift.com/container-platform/4.10/backup_and_restore/index.html
+
+
