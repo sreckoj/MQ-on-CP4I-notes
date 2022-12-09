@@ -1,3 +1,6 @@
 
 # MQ Backup
-Is there a backup and recovery procedure for MQ, if yes - please provide link to Information
+
+
+Backup and restore procedures for queue manager configuration on OpenShift are described in the following document: https://www.ibm.com/docs/en/ibm-mq/9.3?topic=omumo-backing-up-restoring-queue-manager-configuration-using-red-hat-openshift-cli
+
