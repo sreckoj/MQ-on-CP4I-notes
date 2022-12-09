@@ -1,6 +1,5 @@
 
 # Language settings
-How can we force the Cloud console UI to be in English e.g. on a local language device?
 
-Will be done in Browser settings?
-opened support ticket TS011187287
+We noticed "mixed language" content in the Platform Navigator user interface and the OpenShift web console when running in browsers with non-English settings. The problem is reported to IBM support.
+

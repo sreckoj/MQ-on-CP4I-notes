@@ -48,7 +48,7 @@ https://production-gitops.dev/guides/cp4i/mq/using/this-guide/
 
 - 📝 [Best Practices](topics/best-practices)
 
-- ⚠️ [Language settings](topics/language-settings)
+- 📝 [Language settings](topics/language-settings)
 
 - ⚠️ [Description of the YML files](topics/description-of-yamls)
 
