@@ -58,7 +58,7 @@ https://production-gitops.dev/guides/cp4i/mq/using/this-guide/
 
 - ⚠️ [Defining file system attributes](topics/file-system-attributes)
 
-- ⚠️ [Environment promotion patterns (dev-test-prod)](topics/env-promotions)
+- ✅ [Environment promotion patterns (dev-test-prod)](topics/env-promotions)
 
 - ⚠️ [Export MQ config generated from graphical UI](topics/export-from-gui)
 
