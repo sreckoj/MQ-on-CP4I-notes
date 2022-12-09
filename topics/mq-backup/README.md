@@ -16,3 +16,8 @@ If the *ephemeral* type is selected then the content disappears when the pod is 
 
 When the *persistent-claim* type is selected, we must also provide the *storage class* that is used to create *persistent volume claim* in the same OpenShift namespace where the MQ pod is running.
 
+To understand those concepts, please see the following documents:
+- [Storage Classes (Kubernetes)](https://kubernetes.io/docs/concepts/storage/storage-classes/)
+- [Volumes (Kubernetes)](https://kubernetes.io/docs/concepts/storage/volumes/)
+- [Persisten Volumes (Kubernetes)](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
+- [Storage Overview (OpenShift)](https://docs.openshift.com/container-platform/4.10/storage/index.html)

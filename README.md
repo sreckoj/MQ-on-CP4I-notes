@@ -54,7 +54,7 @@ https://production-gitops.dev/guides/cp4i/mq/using/this-guide/
 
 - ✅ [ConfigMap](topics/config-map)
 
-- 📝 [MQ Backup](topics/mq-backup)
+- ✅ [MQ Backup](topics/mq-backup)
 
 - ⚠️ [Defining file system attributes](topics/file-system-attributes)
 
