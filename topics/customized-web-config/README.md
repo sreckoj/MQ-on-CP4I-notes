@@ -21,11 +21,24 @@ The following file with a similar role is by default created in the container:
 /etc/mqm/web/installations/Installation1/servers/mqweb/mqwebuser.xml
 ```
 
-For an illustration, we will try to replace its content with the content from the [example](example/basic_registry.xml) and expose the new web interface to external users.
+For an illustration, we will try to replace its content with the content from the [basic_registry.xml](example/basic_registry.xml) example and expose the new web interface to external users.
 
 Those are the high-level steps:
 - Create a ConfigMap with the new content of *mqwebuser.xml*
 - Map the file inside the container to the ConfigMap entry
 - Create a service that points to the new web interface definition
 - Create a route that exposes this service
+
+## ConfigMap content
+
+Since the original configuration file is called *mqwebuser.xml*, we will create an entry in the ConfigMap with the same name and put everything from the [basic_registry.xml](example/basic_registry.xml) in it:
+
+<img width="850" src="images/Snip20221220_9.png">
+
+The full ConfigMap example is available here: [custom-web-config.yaml](example/custom-web-config.yaml)
+
+
+
+
+
 
