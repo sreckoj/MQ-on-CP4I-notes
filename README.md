@@ -64,7 +64,7 @@ https://production-gitops.dev/guides/cp4i/mq/using/this-guide/
 
 - ✅ [Environment promotion patterns (dev-test-prod)](topics/env-promotions)
 
-- ⚠️ [Export MQ config generated from graphical UI](topics/export-from-gui)
+- ✅ [Export MQ config generated from graphical UI](topics/export-from-gui)
 
 - ⚠️ [Licensing questions](topics/licensing-questions)
 
