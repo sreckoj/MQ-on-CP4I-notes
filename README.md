@@ -68,6 +68,6 @@ https://production-gitops.dev/guides/cp4i/mq/using/this-guide/
 
 - ⚠️ [Licensing questions](topics/licensing-questions)
 
-- 📝 [Customized web user interface](topics/customized-web-intf)
+- 📝 [Customized web interface configuration](topics/customized-web-config)
 
 - ✅ [Miscellaneous](topics/miscellaneous)
