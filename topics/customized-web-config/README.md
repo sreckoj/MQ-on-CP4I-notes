@@ -38,6 +38,37 @@ Since the original configuration file is called *mqwebuser.xml*, we will create 
 The full ConfigMap example is available here: [custom-web-config.yaml](example/custom-web-config.yaml)
 
 
+## Mounting the ConfigMap - QueueManager definition
+
+In the queue manager pod template, we have to define a volume that refers to the ConfigMap entry, and then, in the container definition, we have to create a volume mount that mounts this volume to the file */etc/mqm/web/installations/Installation1/servers/mqweb/mqwebuser.xml* 
+
+<img width="650" src="images/Snip20221220_10.png">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
