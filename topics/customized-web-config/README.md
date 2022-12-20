@@ -65,29 +65,4 @@ In the provided [example](example) we assume that all objects are created in the
 
 <img width="650" src="images/Snip20221220_12.png">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Save YAMLs to the files and apply them with `oc apply -f <filename>` or use the *(+)* icon in the OpenShift web console.
