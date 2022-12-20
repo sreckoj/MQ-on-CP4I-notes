@@ -44,7 +44,9 @@ In the queue manager pod template, we have to define a volume that refers to the
 
 <img width="650" src="images/Snip20221220_10.png">
 
+You can construct the queue manager definition by starting to create an instance in the Cloud Pak user interface (Platform Navigator) and then switching to the YAML editor and manually adding the volume mounting lines. 
 
+This is a full example of the QueueManager object: [test-qmgr.yaml](example/test-qmgr.yaml)
 
 
 
