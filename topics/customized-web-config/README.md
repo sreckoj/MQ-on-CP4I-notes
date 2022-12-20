@@ -48,7 +48,15 @@ You can construct the queue manager definition by starting to create an instance
 
 This is a full example of the QueueManager object: [test-qmgr.yaml](example/test-qmgr.yaml)
 
+Note also that in our example, we disabeld the default user interface in the QueueManager definition:
 
+<img width="650" src="images/Snip20221220_11.png">
+
+As a result, the link to the interface of the MQ instance in the Platform Navigator will be inactive. We will create our own route in the next step.
+
+## Exposing the web interface
+
+We will a create service that points to the interface and the route that exposes the service. Both object are defined here: [custom-web-console-service.yaml](example/custom-web-console-service.yaml) and [custom-web-console-route.yaml](example/custom-web-console-route.yaml) 
 
 
 
