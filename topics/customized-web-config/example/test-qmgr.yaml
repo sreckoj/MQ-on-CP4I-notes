@@ -1,0 +1,48 @@
+apiVersion: mq.ibm.com/v1beta1
+kind: QueueManager
+metadata:
+  annotations:
+    com.ibm.mq/write-defaults-spec: 'false'
+  name: test-qmgr
+  namespace: mq
+spec:
+  license:
+    accept: true
+    license: L-RJON-CD3JKX
+    use: NonProduction
+  queueManager:
+    name: QUICKSTART
+    resources:
+      limits:
+        cpu: 500m
+      requests:
+        cpu: 500m
+    storage:
+      queueManager:
+        type: ephemeral
+  template:
+    pod:
+      containers:
+        - env:
+            - name: MQ_ENABLE_EMBEDDED_WEB_SERVER
+              value: 'true'
+          ports:
+            - containerPort: 9443
+              protocol: TCP
+          volumeMounts:
+            - name: mqwebuser
+              readOnly: true
+              mountPath: "/etc/mqm/web/installations/Installation1/servers/mqweb/mqwebuser.xml"
+              subPath: mqwebuser.xml
+          name: qmgr
+      volumes:
+        - name: mqwebuser
+          configMap:
+            name: custom-web-config
+            items:
+              - key: mqwebuser.xml
+                path: mqwebuser.xml
+            defaultMode: 420          
+  version: 9.3.1.0-r1
+  web:
+    enabled: false
