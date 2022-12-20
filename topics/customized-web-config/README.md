@@ -33,7 +33,7 @@ Those are the high-level steps:
 
 Since the original configuration file is called *mqwebuser.xml*, we will create an entry in the ConfigMap with the same name and put everything from the [basic_registry.xml](example/basic_registry.xml) in it:
 
-<img width="850" src="images/Snip20221220_9.png">
+<img width="650" src="images/Snip20221220_9.png">
 
 The full ConfigMap example is available here: [custom-web-config.yaml](example/custom-web-config.yaml)
 
