@@ -21,7 +21,7 @@ The following file with a similar role is by default created in the container:
 /etc/mqm/web/installations/Installation1/servers/mqweb/mqwebuser.xml
 ```
 
-For an illustration, we will try to replace its content with the content for the [example](example/basic_registry.xml) and expose the new web interface to external users.
+For an illustration, we will try to replace its content with the content from the [example](example/basic_registry.xml) and expose the new web interface to external users.
 
 Those are the high-level steps:
 - Create a ConfigMap with the new content of *mqwebuser.xml*
