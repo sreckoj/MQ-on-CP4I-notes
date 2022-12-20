@@ -59,6 +59,14 @@ As a result, the link to the interface of the MQ instance in the Platform Naviga
 We will a create service that points to the interface and the route that exposes the service. Both object are defined here: [custom-web-console-service.yaml](example/custom-web-console-service.yaml) and [custom-web-console-route.yaml](example/custom-web-console-route.yaml) 
 
 
+## Put it all together
+
+In the provided [example](example) we assume that all objects are created in the OpenShift project (namespace) called **mq**. If necessary, please correct the namespace definitions in all YAMLs. Please also correct the version and license ID in the [test-qmgr.yaml](example/test-qmgr.yaml) if you work with a different version of the MQ. Don't forget to accept the license. For legal reasons the *spec.license.accept* is set to *false*. Change it to *true* before applying the YAML. You can also change the queue manager name from the default *QUICKSTART* to something more descriptive.
+
+<img width="650" src="images/Snip20221220_12.png">
+
+
+
 
 
 
