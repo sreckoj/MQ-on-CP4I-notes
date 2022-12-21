@@ -46,7 +46,7 @@ https://production-gitops.dev/guides/cp4i/mq/using/this-guide/
 
 - 📝 [Certificate management](topics/certificate-management)
 
-- ⚠️ [Configure DNS](topics/configure-dns)
+- 📝 [Configure DNS](topics/configure-dns)
 
 - ⚠️ [MQ-IPT](topics/mq-ipt)
 
