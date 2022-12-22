@@ -60,7 +60,7 @@ https://production-gitops.dev/guides/cp4i/mq/using/this-guide/
 
 - ✅ [MQ Backup](topics/mq-backup)
 
-- ⚠️ [Defining file system attributes](topics/file-system-attributes)
+- ✅ [Defining file system attributes](topics/file-system-attributes)
 
 - ✅ [Environment promotion patterns (dev-test-prod)](topics/env-promotions)
 
