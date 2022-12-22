@@ -48,7 +48,7 @@ https://production-gitops.dev/guides/cp4i/mq/using/this-guide/
 
 - 📝 [Configure DNS](topics/configure-dns)
 
-- ⚠️ [MQ-IPT](topics/mq-ipt)
+- 📝 [MQ-IPT](topics/mq-ipt)
 
 - 📝 [Best Practices](topics/best-practices)
 
