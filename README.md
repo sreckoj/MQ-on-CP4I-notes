@@ -2,7 +2,7 @@
 # IBM MQ on CP4I notes
 
 
->NOTE: This is not an official IBM document. Those are my personal notes based on questions from users who are already experienced with the IBM MQ running in traditional environments but are beginners in using MQ on OpenShift as part of the IBM Cloud Pak for Integration. 
+>NOTE: This is not an official IBM document. Those are my personal notes based on questions from users who are already experienced with the IBM MQ running in traditional environments but are beginners in using MQ on Red Hat OpenShift as part of the IBM Cloud Pak for Integration. 
 >
 >Each entry is currently marked with a status sign:
 >
