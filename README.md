@@ -54,7 +54,7 @@ https://production-gitops.dev/guides/cp4i/mq/using/this-guide/
 
 - 📝 [Language settings](topics/language-settings)
 
-- ⚠️ [Description of the YML files](topics/description-of-yamls)
+- ⚠️ [Description of the YAML files](topics/description-of-yamls)
 
 - ✅ [ConfigMap](topics/config-map)
 
