@@ -66,7 +66,7 @@ https://production-gitops.dev/guides/cp4i/mq/using/this-guide/
 
 - ✅ [Export MQ config generated from graphical UI](topics/export-from-gui)
 
-- ⚠️ [Licensing questions](topics/licensing-questions)
+- 📝 [Licensing questions](topics/licensing-questions)
 
 - ✅ [Customized web interface configuration](topics/customized-web-config)
 

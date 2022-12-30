@@ -4,6 +4,8 @@
 
 The licensing details described here were true at the moment of writing this note. For any recent updates please consult IBM sales and check the official documentation e.g., [IBM Cloud Pak for Integration - Licensing](https://www.ibm.com/docs/en/cloud-paks/cp-integration/2022.4?topic=planning-licensing)
 
+>Note: if the information in the CP4I documentation is different than the one in this post here then the information provided by the documentation should be considered true.
+
 When a Pod is specified in any Kubernetes environment (including OpenShift) it is possible to define the resources each container running in this pod needs. The resources that currently can be defined are **CPU** and **memory** (see also: [Resource Management for Pods and Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)).
 
 There are two parameters that can be defined for each of those resources:
@@ -21,5 +23,29 @@ For an illustration let's imagine that we have a worker node with 8 CPU cores an
 The [IBM License Service](https://www.ibm.com/docs/en/cloud-paks/cp-integration/2022.4?topic=service-license) running as part of the cloud pak sums all **CPU resource limits** of all licensed pods in the cluster. 
 
 All components of the Cloud Pak for Integration have specified default CPU resource requests. Theoretically (for example when using custom images) it could happen that there is a pod without *resource limits* specification. In this case, the whole capacity of the node where such a pod is running is calculated. 
+
+
+## The unit of measuring and ratios
+
+The unit of measuring licenses is called VPC. Although the abbreviation stands for "Virtual Processor Core", this is actually not a technical but a sales term. When we buy the Cloud Pak for Integration we actually buy a certain number of VPCs. We can then spend those VPC for any of the capabilities provided by the CP4I.
+
+On the other hand, the amount of CPU defined by *resource limits* or even its actual consumption is expressed in the virtual processor cores that are in this case the technical term. Very often, the same abbreviation - VPC is used also in this situation. To avoid confusion, it is better to use **vCPU** when we talk about CPU consumption as a technical term and **VPC** when we talk about licensing. 
+
+For many of the products that are part of the CP4I, those two amounts are equal. But this is not the case for all of them. IBM defines so-called ratios between *vCPUs* and *VPCs*. Those ratios are given in the table available in the [Licensing](https://www.ibm.com/docs/en/cloud-paks/cp-integration/2022.4?topic=planning-licensing) document.  
+
+For example, IBM API Connect that consumes 1 vCPU needs 1 VPC of license entitlement. Another example is IBM App Connect has a ratio of 1:3, which means that for 1 vCPU we need 3 VPCs of license entitlement. But, IBM MQ Advanced has a ratio of 2:1 - using 1 license VPC we can consume 2 vCPUs.   
+
+
+## Non-production licenses
+
+The same [Licensing](https://www.ibm.com/docs/en/cloud-paks/cp-integration/2022.4?topic=planning-licensing) document contains also the table for non-production license ratios. As you will see if you check the document, for non-production usage, you can consume twice as much CPU for the same number of the VPCs.
+
+From the capabilities point of view there is no difference between production and non-production installations of MQ.
+
+
+
+
+
+
 
 
