@@ -57,6 +57,7 @@ If we run two or more instances of the **same** CP4I capability on the same node
 - CPU resource limits per instance: 4
 - number of CPUs on node: 8
 In this case, the total number of vCPUs used for the license calculation will be 8 and not 12 (to get the number of VPCs we have to apply the ratio for the specific product -  in the case of the MQ Advanced this would be 4 VPCs). 
+
 Again, this is true only for the pods of the same product (for example just MQ) and not for the mixture of the CP4I products (e.g. MQ and Event Streams).
 
 ## Enforcing pods to run on a specific node
@@ -78,9 +79,9 @@ For licensing and also technical reasons some users want to enforce running pods
   Please see the OpenShift [documentation](https://docs.openshift.com/container-platform/4.10/nodes/scheduling/nodes-scheduler-node-selectors.html) for details
 
 >Note: If you run the OpenShift on IBM Cloud service (ROKS) then you can not update the cluster-wide node selector. In this case, annotate all other namespaces that you don't want to use the same nodes as cp4i with a 'general' selector:
-```
-oc annotate namespace OTHER_PROJECT openshift.io/node-selector='nodeuse=general’
-```  
+>```
+>oc annotate namespace OTHER_PROJECT openshift.io/node-selector='nodeuse=general’
+>```  
 
 
 
