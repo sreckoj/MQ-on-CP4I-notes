@@ -42,6 +42,46 @@ The same [Licensing](https://www.ibm.com/docs/en/cloud-paks/cp-integration/2022.
 
 From the capabilities point of view there is no difference between production and non-production installations of MQ.
 
+## Free components
+
+Some of the components are "for free" - they do not consume license entitlements. Such a component is for example a platform user interface. Please see the table titled "What consumes IBM Cloud Pak for Integration license entitlements according to the ratio?" in already mentioned [Licensing](https://www.ibm.com/docs/en/cloud-paks/cp-integration/2022.4?topic=planning-licensing) document. Despite those components do not consume licenses, we still should be careful when planning the installation. They do not need VPCs but they still consume vCPUs and therefore can influence the Red Hat OpenShift licenses needed for the cluster. 
+
+## Red Hat OpenShift licenses
+
+At the moment of writing this note, there was a rule that entitles the customer to be allowed to run 3 OpenShift cores (vCPUs) for each Cloud Pak's VPC. Please see the following document for more details: [Red Hat OpenShift licenses](https://www.ibm.com/docs/en/cloud-paks/cp-integration/2022.4?topic=planning-licensing#rhos-licenses)
+
+## Capping
+
+If we run two or more instances of the **same** CP4I capability on the same node and if the sum of CPU *resource limits* exceeds the total number of CPUs on that node, the licensing service will take into account the number of node's CPUs instead the sum of the resource limits. For example, let's consider the following situation:
+- number of instances: 3
+- CPU resource limits per instance: 4
+- number of CPUs on node: 8
+In this case, the total number of vCPUs used for the license calculation will be 8 and not 12 (to get the number of VPCs we have to apply the ratio for the specific product -  in the case of the MQ Advanced this would be 4 VPCs). 
+Again, this is true only for the pods of the same product (for example just MQ) and not for the mixture of the CP4I products (e.g. MQ and Event Streams).
+
+## Enforcing pods to run on a specific node
+
+For licensing and also technical reasons some users want to enforce running pods on a specific node. This is possible using the following steps:
+- Label nodes that are going to be used for cp4i with a specific key-value pair, for example:
+  ```
+  oc label node NODE_NAME nodeuse=cp4i
+  ```
+- Create an OpenShift project (namespace) and annotate it with the same key-value pair
+  ```
+  oc annotate namespace PROJECT_NAME openshift.io/node-selector='nodeuse=cp4i’
+  ```
+  All pods created in the specified project will be scheduled on the labeled node.
+- If you want that all other pods are scheduled on other nodes, update the cluster-wide node selector
+  ```
+  defaultNodeSelector: nodeuse=general
+  ``` 
+  Please see the OpenShift [documentation](https://docs.openshift.com/container-platform/4.10/nodes/scheduling/nodes-scheduler-node-selectors.html) for details
+
+>Note: If you run the OpenShift on IBM Cloud service (ROKS) then you can not update the cluster-wide node selector. In this case, annotate all other namespaces that you don't want to use the same nodes as cp4i with a 'general' selector:
+```
+oc annotate namespace OTHER_PROJECT openshift.io/node-selector='nodeuse=general’
+```  
+
 
 
 
