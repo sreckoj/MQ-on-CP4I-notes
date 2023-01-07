@@ -117,11 +117,39 @@ Let's start:
   >podman exec -it <container_name> bash
   >```
 
+- Login to OpenShift and create new project
+  ```
+  oc new-project mqipt
+  ```
 
+- Get the registry URL
+  ```
+  oc registry info
+  ```  
+  In our test environment, we got the following:
+  ```
+  default-route-openshift-image-registry.apps.ocp410.tec.uk.ibm.com
+  ```
 
+- Login to the internal registry
+  ```
+  podman login -u $(oc whoami) -p $(oc whoami -t) default-route-openshift-image-registry.apps.ocp410.tec.uk.ibm.com --tls-verify=false
+  ```
 
+- Tag the image
+  ```
+  podman tag mqipt:latest default-route-openshift-image-registry.apps.ocp410.tec.uk.ibm.com/mqipt/mqipt:1.0
+  ```
 
+- Push the image
+  ```
+  podman push default-route-openshift-image-registry.apps.ocp410.tec.uk.ibm.com/mqipt/mqipt:1.0 --tls-verify=false
+  ```
 
+- Verify the image in the internal registry using the OpenShift web console. In the left navigation panel select **Builds > Image Streams**. Select the project: **mqipt**. You should see the internal repository similar to the following example: 
+  ```
+  image-registry.openshift-image-registry.svc:5000/mqipt/mqipt
+  ```
 
 
 
