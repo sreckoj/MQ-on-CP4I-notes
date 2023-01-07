@@ -146,11 +146,53 @@ Let's start:
   podman push default-route-openshift-image-registry.apps.ocp410.tec.uk.ibm.com/mqipt/mqipt:1.0 --tls-verify=false
   ```
 
-- Verify the image in the internal registry using the OpenShift web console. In the left navigation panel select **Builds > Image Streams**. Select the project: **mqipt**. You should see the internal repository similar to the following example: 
+- Verify the image in the internal registry using the OpenShift web console. In the left navigation panel select **Builds > Image Streams**. Select the project: **mqipt**. Click on the image stream **mqipt** and you should find on the page the following internal repository name: 
   ```
   image-registry.openshift-image-registry.svc:5000/mqipt/mqipt
   ```
 
+- Create a config map from the **mqipt.conf** file:
+  ```
+  oc create configmap --save-config mqipt-conf --from-file=mqipt-conf=./mqipt.conf 
+  ```  
+
+- Prepare Deployment object. It uses a previously prepared image and mounts ConfigMap to the container's internal directory. You can store the content in the file and run *oc apply* command or use the *(+)* command from the OpenShift web console toolbar. When Deployment is applied check that the pod has started without errors: 
+  ```yaml
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: mqipt
+    namespace: mqipt
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: mq-ipt
+    template:
+      metadata:
+        labels:
+          app: mq-ipt
+      spec:
+        containers:
+        - image: image-registry.openshift-image-registry.svc:5000/mqipt/mqipt:1.0
+          imagePullPolicy: Always
+          name: mqipt
+          ports:
+          - containerPort: 1414
+            name: ipt-listener
+          - containerPort: 8080
+            name: http-listener
+          volumeMounts:
+          - mountPath: "/tmp/mqipt"
+            name: mqipt-conf
+        volumes:
+        - name: mqipt-conf
+          configMap:
+            name: mqipt-conf
+            items:
+            - key: mqipt-conf
+              path: mqipt.conf
+  ```  
 
 
 
