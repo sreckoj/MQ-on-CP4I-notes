@@ -64,6 +64,28 @@ Let's start:
   chmod 755 startMQIPT.sh
   ```  
 
+- Create **Dockerfile** (like explained above, slightly different that the original)
+  Note also that the tar file is also different. We use here the newer version downloaded before:
+  ```Dockerfile
+  FROM ibmcom/ibmjava:jre
+  ARG IPTFILE=9.3.1.0-IBM-MQIPT-LinuxX64.tar.gz
+  COPY $IPTFILE /opt/
+  RUN rm -rf /var/lib/apt/lists/* \
+    && cd /opt/ \
+    && tar xvf ./$IPTFILE \
+    && chmod -R a-w /opt/mqipt \
+    && mkdir -p /var/mqipt/logs \
+    && mkdir -p /var/mqipt/errors \
+    && chmod 777 /var/mqipt \
+    && chmod 777 /var/mqipt/logs \
+    && chmod 777 /var/mqipt/errors \      
+    && mkdir -p /tmp/mqipt \
+    && ln -s /tmp/mqipt/mqipt.conf /var/mqipt/mqipt.conf
+  ENV MQIPT_PATH=/opt/mqipt
+  COPY startMQIPT.sh /usr/local/bin
+  ENTRYPOINT ["startMQIPT.sh"]    
+  ```
+
 
 
 
