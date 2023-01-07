@@ -59,6 +59,11 @@ Let's start:
   wait "$MQIPTPROCESS"    
   ```
 
+- Make the script executable
+  ```sh
+  chmod 755 startMQIPT.sh
+  ```  
+
 
 
 
