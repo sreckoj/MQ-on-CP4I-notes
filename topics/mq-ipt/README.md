@@ -22,7 +22,12 @@ When running on OpenShift (or any other implementation of Kubernetes) we have to
 
 We will create an image that is slightly different from the one defined in the original Dockerfile. The reason for that is the way how the home directory (*/var/mqipt*) is provided. This directory contains the configuration file (*mqipt.conf*) and at the same time serves as the workspace directory where the logs and error messages are stored. When running an image locally, as described in the referenced article, the directory on the local file system is mounted to the directory inside the container. It can therefore serve both purposes. When running on the OpenShift we want to provide the configuration file as a ConfigMap. But, if we mount the ConfigMap to the directory inside the container we will not be able to create logs and error files on this directory. One of the possible solutions for that is to mount ConfigMap to a temporary directory (*/tmp/mqipt*) and then create a symbolic link in the home directory (*/var/mqipt*) that points to the configuration file (*mqipt.conf*) in this temporary directory. The following code examples are self-explanatory.
 
+We will push the image to the OpenShift internal registry, the alternative is to use any external registry like Artifactory or Quay instead
 
+Let's start:
+
+- Download the MQIPT tar file: <br>
+  As per the document https://www.ibm.com/support/pages/ms81-ibm-mq-internet-pass-thru the SupportPac MS81 can be now downloaded from the [FixCentral](https://www.ibm.com/support/fixcentral/swg/selectFixes?parent=ibm~WebSphere&product=ibm/WebSphere/WebSphere+MQ&release=9.3.0.0&platform=All&function=fixid&fixids=*IBM-MQIPT*). For this exercise we downloaded the file **9.3.1.0-IBM-MQIPT-LinuxX64.tar.gz** which was the latest version at that moment.
 
 
 
