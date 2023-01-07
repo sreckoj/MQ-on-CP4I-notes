@@ -86,6 +86,37 @@ Let's start:
   ENTRYPOINT ["startMQIPT.sh"]    
   ```
 
+- Create the config file **mqipt.conf** <br> 
+  *This is just an example - it does not really do anything useful. Please adapt it to serve your needs. There is also a sample configuration file available in the samples directory in IPT tar.*
+  ```
+  [global]
+  ClientAccess=true
+  IdleTimeout=20
+  [route]
+  ListenerPort=1815
+  Destination=qmgr1.example.com
+  DestinationPort=1414
+  ```  
+
+- Build the image (we are using the *podman* here, but you can equally use the *docker* CLI):
+  ```
+  podman build -t mqipt .
+  ```    
+
+- Test image locally:
+  ```
+  podman run --rm --volume $(pwd):/tmp/mqipt -p 1414:1414 mqipt
+  ```
+  Press Ctrl+C to stop the container
+  >Note:
+  >The above command uses *--rm* which removes container after xist.
+  >To run the container in the background (detach mode) use the option *-d*
+  >For example, `podman run -d --volume $(pwd):/tmp/mqipt -p 1414:1414 mqipt`
+  >To enter "into" the container and check the content run:
+  >```
+  >podman exec -it <container_name> bash
+  >```
+
 
 
 
