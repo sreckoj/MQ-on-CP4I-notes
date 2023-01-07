@@ -9,8 +9,44 @@ https://www.ibm.com/docs/en/ibm-mq/9.3?topic=configuring-mq-internet-pass-thru
 
 It is possible to run MQIPT in a container. Please follow the instructions in [IBM MQ Internet Pass-Thru on Docker](https://github.com/ibm-messaging/mq-container/tree/master/incubating/mqipt) to build and run it. 
 
----
+## Running on OpenShift
 
-TODO:
+The article mentioned above explains how to run the MQIPT in a standalone container. We will try to do the same in OpenShift. 
 
-The provided instructions describe how to build and run the standalone container with MQIPT. We have to extend this to the possibility of running in OpenShift. This would probably include the ConfigMap with the IPT configuration and solution for building the image and running the container in a pod.
+The command for running the container was the following:
+```
+docker run -d --volume <path to config>:/var/mqipt -p 1414:1414 mqipt
+```
+
+When running on OpenShift (or any other implementation of Kubernetes) we have to replace this command with a Deployment object that defines the image used, the ports, and the volume mounting for the running pod. Before that, we have to push the built container image to some registry available to the pod when it starts the container. Instead of mounting the directory from the local file system the most appropriate way would be to store the IPT configuration file in the ConfigMap object and then mount this object to the directory inside the container.
+
+We will create an image that is slightly different from the one defined in the original Dockerfile. The reason for that is the way how the home directory (/var/mqipt) is provided. This directory contains the configuration file (mqipt.conf) and at the same time serves as the workspace directory where the logs and error messages are stored. When running an image locally, as described in the referenced article, the directory on the local file system is mounted to the directory inside the container. It can therefore serve both purposes. When running on the OpenShift we want to provide the configuration file as a ConfigMap. But, if we mount the ConfigMap to the directory inside the container we will not be able to create logs and error files on this directory. One of the possible solutions for that is to mount ConfigMap to a temporary directory (/tmp/mqipt) and then create a symbolic link in the home directory (/var/mqipt) that points to the configuration file (mqipt.conf) in this temporary directory. The following code examples are self-explanatory.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
