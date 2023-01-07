@@ -26,8 +26,38 @@ We will push the image to the OpenShift internal registry, the alternative is to
 
 Let's start:
 
-1. Download the MQIPT tar file: <br>
+- Download the MQIPT tar file: <br>
   As per the document https://www.ibm.com/support/pages/ms81-ibm-mq-internet-pass-thru the SupportPac MS81 can be now downloaded from the [FixCentral](https://www.ibm.com/support/fixcentral/swg/selectFixes?parent=ibm~WebSphere&product=ibm/WebSphere/WebSphere+MQ&release=9.3.0.0&platform=All&function=fixid&fixids=*IBM-MQIPT*). For this exercise we downloaded the file **9.3.1.0-IBM-MQIPT-LinuxX64.tar.gz** which was the latest version at that moment.
+
+- Create file  **startMQIPT.sh** with the script that serves as a container entry point (same as in the original example):
+  ```sh
+  #!/bin/bash
+  # -*- mode: sh -*-
+  # © Copyright IBM Corporation 2018
+  #
+  # Licensed under the Apache License, Version 2.0 (the "License");
+  # you may not use this file except in compliance with the License.
+  # You may obtain a copy of the License at
+  #
+  # http://www.apache.org/licenses/LICENSE-2.0
+  #
+  # Unless required by applicable law or agreed to in writing, software
+  # distributed under the License is distributed on an "AS IS" BASIS,
+  # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  # See the License for the specific language governing permissions and
+  # limitations under the License.
+  stop()
+  {
+      /opt/mqipt/bin/mqiptAdmin -stop
+  }
+
+  trap stop SIGTERM SIGINT
+  # Run MQIPT and then wait on the process to end.
+  /opt/mqipt/bin/mqipt /var/mqipt &
+  MQIPTPROCESS=$!
+
+  wait "$MQIPTPROCESS"    
+  ```
 
 
 
