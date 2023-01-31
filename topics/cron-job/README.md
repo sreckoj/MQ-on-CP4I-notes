@@ -21,7 +21,7 @@ Those are the high-level steps that we are going to implement
 
 ## Prepare a ConfigMap with a simple MQ configuration
 
-We will two local queues, just to have something.
+We will create two local queues, just to have something.
 
 ```yaml
 apiVersion: v1
