@@ -35,7 +35,50 @@ data:
     DEFINE QLOCAL('DEV.QUEUE.2') REPLACE
 ```
 
+## Create QueueManager that uses this ConfigMap
 
+Apply the following YAML - note that it refers previously created ConfigMap:
+
+```yaml
+apiVersion: mq.ibm.com/v1beta1
+kind: QueueManager
+metadata:
+  annotations:
+    com.ibm.mq/write-defaults-spec: 'false'
+  name: mq-test1
+  namespace: mq
+spec:
+  license:
+    accept: true
+    license: L-RJON-CJR2RX
+    use: NonProduction
+  queueManager:
+    name: TESTQMGR
+    mqsc:
+    - configMap:
+        name: mqsc-example
+        items:
+        - example1.mqsc
+    resources:
+      limits:
+        cpu: 500m
+      requests:
+        cpu: 500m
+    storage:
+      queueManager:
+        type: ephemeral
+  template:
+    pod:
+      containers:
+        - env:
+            - name: MQSNOAUT
+              value: 'yes'
+          name: qmgr
+  version: 9.3.1.0-r3
+  web:
+    enabled: true
+
+```
 
 
 
