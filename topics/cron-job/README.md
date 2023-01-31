@@ -37,7 +37,7 @@ data:
 
 ## Create QueueManager that uses this ConfigMap
 
-Apply the following YAML - note that it refers previously created ConfigMap:
+Change the *spec/license/accept* to *true* (for legal reasons it is here set to *false*) and apply this YAML:
 
 ```yaml
 apiVersion: mq.ibm.com/v1beta1
@@ -49,7 +49,7 @@ metadata:
   namespace: mq
 spec:
   license:
-    accept: true
+    accept: false
     license: L-RJON-CJR2RX
     use: NonProduction
   queueManager:
