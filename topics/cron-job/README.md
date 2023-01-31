@@ -19,5 +19,41 @@ Those are the high-level steps that we are going to implement
 6. Create and run an "ordinary" OpenShift Job
 7. Prepare a CronJob
 
+## Prepare a ConfigMap with a simple MQ configuration
+
+We will two local queues, just to have something.
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mqsc-example
+  namespace: mq
+data:
+  example1.mqsc: |
+    DEFINE QLOCAL('DEV.QUEUE.1') REPLACE
+    DEFINE QLOCAL('DEV.QUEUE.2') REPLACE
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
