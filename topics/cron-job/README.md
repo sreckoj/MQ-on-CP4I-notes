@@ -161,6 +161,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: mq-test-job
+  namespace: mq
 spec:
   template:
     spec:
@@ -183,7 +184,41 @@ spec:
 ```
 
 
+## Prepare CronJob
 
+Finally, we can transform our Job into the CronJob. We can just copy/paste the specification of our job to the CronJob's jobTemplate and add a schedule. 
+
+It should look similar to the following example:
+
+```yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: mq-test-cron-job
+  namespace: mq
+spec:
+  schedule: "50,52,54,56 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: mq-batch
+          volumes:
+            - name: mq-test-script
+              configMap:
+                name: mq-cronjob-test-script
+                defaultMode: 511
+          containers:
+            - name: mq-test-job
+              command:
+                - /scripts/test-script.sh
+              imagePullPolicy: IfNotPresent
+              image: 'quay.io/openshift/origin-cli:latest'
+              volumeMounts:
+                - name: mq-test-script
+                  mountPath: /scripts
+          restartPolicy: OnFailure
+```
 
 
 
