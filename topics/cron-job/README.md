@@ -220,37 +220,11 @@ spec:
           restartPolicy: OnFailure
 ```
 
+## Conclusion and next steps
 
+When CronJob is executed it creates a pod that ends up in ***Completed*** state.
+The output of our script is available in the logs of that pod. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+As a next step, we have to find a way how to store that output in some external location.
 
 
