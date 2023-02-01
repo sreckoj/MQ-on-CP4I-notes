@@ -115,6 +115,60 @@ ALTER QMGR +
 ...
 ```
 
+## Create a service account and role bindings
+
+Since the job will access another pod in the namespace it must have permission to do that. The easiest way is to create a service account for that job and assign the admin role to that account. We can choose whatever name for the service account. In this example, we named it *mq-batch*.
+
+Create a service account:
+```
+oc create serviceaccount mq-batch -n mq
+```
+
+Create role binding:
+```
+oc create clusterrolebinding deletedb2-crb --clusterrole=cluster-admin --serviceaccount=mq:mq-batch
+```
+
+## Create a ConfigMap with a job script
+
+The next step would be to prepare a script that will contain the same commands as in the manual test. We will store the script in a ConfigMap.
+
+Apply the following YAML:
+
+```yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: mq-cronjob-test-script
+  namespace: mq
+data:
+  test-script.sh: |
+    #!/bin/bash
+    pod_name=`oc get pods --selector app.kubernetes.io/name=ibm-mq,app.kubernetes.io/instance=mq-test1 -o jsonpath='{.items[0].metadata.name}'`
+    oc exec -it $pod_name -- dmpmqcfg
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
