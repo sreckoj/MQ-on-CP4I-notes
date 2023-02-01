@@ -148,8 +148,39 @@ data:
     oc exec -it $pod_name -- dmpmqcfg
 ```
 
+## Create and run an "ordinary" OpenShift Job
 
+We can now create a job that runs the script. Let's create and test an "ordinary" Job in the OpenShift. In our example, we will apply a YAML with the job definition. It is also possible to create it manually through the OpenShift web console (please see the *Workloads > Jobs* and *Workloads > CronJobs* in the command left panel).  
 
+Please note in the following YAML how the service account and ConfigMap are assigned to the job.
+
+Since we have to run the *oc* commands in the script, we selected *quay.io/openshift/origin-cli:latest* image for the job. This is a light image that contains the *oc* CLI tools.
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mq-test-job
+spec:
+  template:
+    spec:
+      serviceAccountName: mq-batch
+      volumes:
+        - name: mq-test-script
+          configMap:
+            name: mq-cronjob-test-script
+            defaultMode: 511
+      containers:
+        - name: mq-test-job
+          command:
+            - /scripts/test-script.sh
+          imagePullPolicy: IfNotPresent
+          image: 'quay.io/openshift/origin-cli:latest'
+          volumeMounts:
+            - name: mq-test-script
+              mountPath: /scripts
+      restartPolicy: OnFailure
+```
 
 
 
